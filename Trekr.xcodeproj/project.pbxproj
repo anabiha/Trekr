@@ -14,6 +14,9 @@
 		35DC45E721111AD100F98327 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35DC45E521111AD100F98327 /* LaunchScreen.storyboard */; };
 		35DC45F321111C2400F98327 /* ListNearbyPlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DC45F221111C2400F98327 /* ListNearbyPlacesTableViewController.swift */; };
 		35DC45F521111F7000F98327 /* ListPlacesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DC45F421111F7000F98327 /* ListPlacesTableViewCell.swift */; };
+		35DC45FB21122EB800F98327 /* GooglePlaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DC45FA21122EB700F98327 /* GooglePlaceData.swift */; };
+		35DC45FF2112318100F98327 /* PhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DC45FE2112318100F98327 /* PhotoHelper.swift */; };
+		35DC460121124B8100F98327 /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DC460021124B8100F98327 /* GooglePlace.swift */; };
 		F223F4D4DBDD657EE9624667 /* Pods_Trekr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D4F1663F15F72009678EBA /* Pods_Trekr.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +30,9 @@
 		35DC45E821111AD100F98327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35DC45F221111C2400F98327 /* ListNearbyPlacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNearbyPlacesTableViewController.swift; sourceTree = "<group>"; };
 		35DC45F421111F7000F98327 /* ListPlacesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPlacesTableViewCell.swift; sourceTree = "<group>"; };
+		35DC45FA21122EB700F98327 /* GooglePlaceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlaceData.swift; sourceTree = "<group>"; };
+		35DC45FE2112318100F98327 /* PhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHelper.swift; sourceTree = "<group>"; };
+		35DC460021124B8100F98327 /* GooglePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlace.swift; sourceTree = "<group>"; };
 		72140E1752AD419177ACAD85 /* Pods-Trekr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trekr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Trekr/Pods-Trekr.release.xcconfig"; sourceTree = "<group>"; };
 		D0D4F1663F15F72009678EBA /* Pods_Trekr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trekr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F927947F8E5A23C555DF5828 /* Pods-Trekr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trekr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trekr/Pods-Trekr.debug.xcconfig"; sourceTree = "<group>"; };
@@ -107,6 +113,8 @@
 		35DC45F021111AF300F98327 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				35DC45FA21122EB700F98327 /* GooglePlaceData.swift */,
+				35DC460021124B8100F98327 /* GooglePlace.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -114,6 +122,7 @@
 		35DC45F121111AF800F98327 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				35DC45FE2112318100F98327 /* PhotoHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -268,8 +277,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				35DC45DF21111AD000F98327 /* ViewController.swift in Sources */,
+				35DC45FB21122EB800F98327 /* GooglePlaceData.swift in Sources */,
 				35DC45F321111C2400F98327 /* ListNearbyPlacesTableViewController.swift in Sources */,
+				35DC45FF2112318100F98327 /* PhotoHelper.swift in Sources */,
 				35DC45DD21111AD000F98327 /* AppDelegate.swift in Sources */,
+				35DC460121124B8100F98327 /* GooglePlace.swift in Sources */,
 				35DC45F521111F7000F98327 /* ListPlacesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

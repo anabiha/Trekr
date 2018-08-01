@@ -12,6 +12,9 @@
 		35DC45E221111AD000F98327 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35DC45E021111AD000F98327 /* Main.storyboard */; };
 		35DC45E421111AD100F98327 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35DC45E321111AD100F98327 /* Assets.xcassets */; };
 		35DC45E721111AD100F98327 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35DC45E521111AD100F98327 /* LaunchScreen.storyboard */; };
+		35DC45F321111C2400F98327 /* ListNearbyPlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DC45F221111C2400F98327 /* ListNearbyPlacesTableViewController.swift */; };
+		35DC45F521111F7000F98327 /* ListPlacesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DC45F421111F7000F98327 /* ListPlacesTableViewCell.swift */; };
+		F223F4D4DBDD657EE9624667 /* Pods_Trekr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D4F1663F15F72009678EBA /* Pods_Trekr.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,11 @@
 		35DC45E321111AD100F98327 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35DC45E621111AD100F98327 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35DC45E821111AD100F98327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35DC45F221111C2400F98327 /* ListNearbyPlacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNearbyPlacesTableViewController.swift; sourceTree = "<group>"; };
+		35DC45F421111F7000F98327 /* ListPlacesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPlacesTableViewCell.swift; sourceTree = "<group>"; };
+		72140E1752AD419177ACAD85 /* Pods-Trekr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trekr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Trekr/Pods-Trekr.release.xcconfig"; sourceTree = "<group>"; };
+		D0D4F1663F15F72009678EBA /* Pods_Trekr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trekr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F927947F8E5A23C555DF5828 /* Pods-Trekr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trekr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trekr/Pods-Trekr.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +37,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F223F4D4DBDD657EE9624667 /* Pods_Trekr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2615F0F832F70554F1488162 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F927947F8E5A23C555DF5828 /* Pods-Trekr.debug.xcconfig */,
+				72140E1752AD419177ACAD85 /* Pods-Trekr.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		35DC45D021111AD000F98327 = {
 			isa = PBXGroup;
 			children = (
+				35DC45F121111AF800F98327 /* Helpers */,
+				35DC45F021111AF300F98327 /* Models */,
+				35DC45EF21111AEF00F98327 /* Views */,
+				35DC45EE21111AE300F98327 /* Controllers */,
 				35DC45DB21111AD000F98327 /* Trekr */,
 				35DC45DA21111AD000F98327 /* Products */,
+				2615F0F832F70554F1488162 /* Pods */,
+				3893F70A046AC37F33F02486 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,12 +80,50 @@
 			children = (
 				35DC45DC21111AD000F98327 /* AppDelegate.swift */,
 				35DC45DE21111AD000F98327 /* ViewController.swift */,
-				35DC45E021111AD000F98327 /* Main.storyboard */,
 				35DC45E321111AD100F98327 /* Assets.xcassets */,
 				35DC45E521111AD100F98327 /* LaunchScreen.storyboard */,
 				35DC45E821111AD100F98327 /* Info.plist */,
 			);
 			path = Trekr;
+			sourceTree = "<group>";
+		};
+		35DC45EE21111AE300F98327 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				35DC45F221111C2400F98327 /* ListNearbyPlacesTableViewController.swift */,
+				35DC45F421111F7000F98327 /* ListPlacesTableViewCell.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		35DC45EF21111AEF00F98327 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				35DC45E021111AD000F98327 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		35DC45F021111AF300F98327 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		35DC45F121111AF800F98327 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3893F70A046AC37F33F02486 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D0D4F1663F15F72009678EBA /* Pods_Trekr.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +133,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35DC45EB21111AD100F98327 /* Build configuration list for PBXNativeTarget "Trekr" */;
 			buildPhases = (
+				17886952F939042787D7AD45 /* [CP] Check Pods Manifest.lock */,
 				35DC45D521111AD000F98327 /* Sources */,
 				35DC45D621111AD000F98327 /* Frameworks */,
 				35DC45D721111AD000F98327 /* Resources */,
+				84B76F1526BD8FE8B4E7A3F2 /* [CP] Embed Pods Frameworks */,
+				59E8C017C659F509CE7FE588 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,13 +195,82 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		17886952F939042787D7AD45 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Trekr-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		59E8C017C659F509CE7FE588 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Trekr/Pods-Trekr-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Trekr/Pods-Trekr-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		84B76F1526BD8FE8B4E7A3F2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Trekr/Pods-Trekr-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Clarifai/Clarifai.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Clarifai.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Trekr/Pods-Trekr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		35DC45D521111AD000F98327 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				35DC45DF21111AD000F98327 /* ViewController.swift in Sources */,
+				35DC45F321111C2400F98327 /* ListNearbyPlacesTableViewController.swift in Sources */,
 				35DC45DD21111AD000F98327 /* AppDelegate.swift in Sources */,
+				35DC45F521111F7000F98327 /* ListPlacesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +412,7 @@
 		};
 		35DC45EC21111AD100F98327 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F927947F8E5A23C555DF5828 /* Pods-Trekr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -296,6 +431,7 @@
 		};
 		35DC45ED21111AD100F98327 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72140E1752AD419177ACAD85 /* Pods-Trekr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

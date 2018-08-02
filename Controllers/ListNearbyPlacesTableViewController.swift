@@ -13,62 +13,66 @@ import CoreLocation
 /*
  This sets up the home view, when a user first enters the app, they see a table view of places that are nearby to them that are not a result of them inputting a photo, it is simply there for them to see places that are nearby them
  */
+
 class ListNearbyPlacesTableViewController : UITableViewController, CLLocationManagerDelegate{
     
+    //to track the user's location
     private let locationManager = CLLocationManager()
-    
     var locValue : CLLocationCoordinate2D!
     
+    //to store the results of the places near the users
     var businesses: [CDYelpBusiness] = []
     
+    //sets up the client that will communicate with Yelp
     private let yelpAPIClient = CDYelpAPIClient(apiKey:"jLXjDlnpU3aVVE0FSiObtMMMIRGp9b_Ro3YLMSmHSTASWs8nzoEx-XIkOuHG4s5IbkvbnWIvKjkhViQbUJ1NC7FMwXwEQ1QIPe4Vg-OxG2QL-snTD-UI897Z5TxjW3Yx")
     
-    let placesToLookFor =  ["park", "beach", "restaurant", "hotel", "bar", "coffee", "food", "landmark", "museum", "garden", "vineyard", "bridge", "concert", "cathedral", "religion", "tourism", "tower", "mountain", "historic sites", "shopping", "boutique", "nature"]
-    
-    var name = ""
-    var address = ""
-    var image: UIImage!
-    
-    
+    //sets up the ability for the user to get their image analyzed
     let photoHelper = PhotoHelper()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        tableView.reloadData()
+        tableView.delegate = self
+        tableView.dataSource = self
         
         locationManager.delegate = self as CLLocationManagerDelegate
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-        //error here
         locationManager.requestLocation()
         locationManager.startUpdatingLocation()
-        
-        
-        
+
     }
     
+    //when the camera button is pressed, the user is presented with an action sheet that allows users to capture a photo from their camera or upload a photo from their photo library, this then goes through the image analysis and leads to a view that presents user with customized results
     @IBAction func cameraButtonPressed(_ sender: Any) {
-        //present the action sheet from photoHelper to allow user to capture a photo from their camera or upload a photo from their photo library
         photoHelper.presentActionSheet(from: self)
     }
     
-    
+    //refresh location status while user is still in app (if user travels somewhere else while the app is open)
     @IBAction func refreshButtonPressed(_ sender: Any) {
-        findPlaces(lat: locValue.latitude, lng: locValue.longitude)
+
     }
     
+    //accesses Yelp Search API to find a generic list of places near them
     func findPlaces(lat: Double, lng: Double) {
+        
+        var results: [CDYelpBusiness] = []
+        
         //cancel any API request previosuly made
         yelpAPIClient.cancelAllPendingAPIRequests()
+        
         //query Yelp Fusion API for business result
-        yelpAPIClient.searchBusinesses(byTerm: nil, location: nil, latitude: lat, longitude: lng, radius: 10000, categories: nil, locale: nil, limit: 50, offset: 0, sortBy:.rating, priceTiers: nil, openNow: nil, openAt: nil, attributes: nil) { (response) in
-            let results = (response?.businesses)!
+        yelpAPIClient.searchBusinesses(byTerm: nil, location: nil, latitude: lat, longitude: lng, radius: 10000, categories: nil, locale: nil, limit: 25, offset: 0, sortBy:.rating, priceTiers: nil, openNow: nil, openAt: nil, attributes: nil) { (response) in
             
-            for place in results {
-                self.businesses.append(place)
-            }
+            results = (response?.businesses)!
         }
+        
+        for place in results {
+            self.businesses.append(place)
+        }
+        
+        results.removeAll()
     }
     
 
@@ -77,8 +81,9 @@ class ListNearbyPlacesTableViewController : UITableViewController, CLLocationMan
         return businesses.count
     }
     
-    //formats each cell
+    //formats each cell to include an image, place name, and rating
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "listPlaces", for: indexPath) as! ListPlacesTableViewCell
         
         findPlaces(lat: 37.773514, lng: -122.417807)
@@ -136,14 +141,17 @@ class ListNearbyPlacesTableViewController : UITableViewController, CLLocationMan
             locationManager.requestLocation()
         }
     }
+    
     //executes when the location manager recieves new location data
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locValue = manager.location?.coordinate
     }
     
+    //if there is any location manager errors
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error: \(error)")
     }
+    
 }
 
 

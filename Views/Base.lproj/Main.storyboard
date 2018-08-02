@@ -87,11 +87,10 @@
             </objects>
             <point key="canvasLocation" x="1239.2" y="-483.50824587706148"/>
         </scene>
-        <!--Place Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="xnU-Ax-6Gs">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3zb-o9-owK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wQc-4c-PZ8" customClass="PlaceNavigationController" customModule="Trekr" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wQc-4c-PZ8" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gNU-WL-blh">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -102,6 +101,7 @@
                         <segue destination="V7w-3Y-ha3" kind="relationship" relationship="rootViewController" id="Gdq-mU-2bh"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3zb-o9-owK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="300" y="-483.50824587706148"/>
         </scene>

@@ -9,7 +9,7 @@ target 'Trekr' do
 pod 'Clarifai'
 pod 'Alamofire'
 pod 'SwiftyJSON'
-pod 'GooglePlaces'
-pod 'GooglePlacePicker'
-pod 'GoogleMaps'
+pod 'CDYelpFusionKit', '1.5.0'
+pod 'AlamofireObjectMapper'
+pod 'ObjectMapper'
 end

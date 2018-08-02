@@ -7,17 +7,21 @@
 //
 
 import UIKit
-import GooglePlaces
-import GoogleMaps
+import CDYelpFusionKit
+import CoreLocation
 
 /*
  This sets up the home view, when a user first enters the app, they see a table view of places that are nearby to them that are not a result of them inputting a photo, it is simply there for them to see places that are nearby them
  */
-class ListNearbyPlacesTableViewController : UITableViewController{
-    
-    var placesClient : GMSPlacesClient!
+class ListNearbyPlacesTableViewController : UITableViewController, CLLocationManagerDelegate{
     
     private let locationManager = CLLocationManager()
+    
+    var locValue : CLLocationCoordinate2D!
+    
+    var businesses: [CDYelpBusiness] = []
+    
+    private let yelpAPIClient = CDYelpAPIClient(apiKey:"jLXjDlnpU3aVVE0FSiObtMMMIRGp9b_Ro3YLMSmHSTASWs8nzoEx-XIkOuHG4s5IbkvbnWIvKjkhViQbUJ1NC7FMwXwEQ1QIPe4Vg-OxG2QL-snTD-UI897Z5TxjW3Yx")
     
     let placesToLookFor =  ["park", "beach", "restaurant", "hotel", "bar", "coffee", "food", "landmark", "museum", "garden", "vineyard", "bridge", "concert", "cathedral", "religion", "tourism", "tower", "mountain", "historic sites", "shopping", "boutique", "nature"]
     
@@ -25,17 +29,13 @@ class ListNearbyPlacesTableViewController : UITableViewController{
     var address = ""
     var image: UIImage!
     
-    //to make calls to the Google Places API
-    private let dataProvider = GooglePlaceData()
-    //how far out from the user's location the API will search for locations
-    private let searchRadius: Double = 1000
     
     let photoHelper = PhotoHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        placesClient = GMSPlacesClient.shared()
+        tableView.reloadData()
         
         locationManager.delegate = self as CLLocationManagerDelegate
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -43,6 +43,8 @@ class ListNearbyPlacesTableViewController : UITableViewController{
         //error here
         locationManager.requestLocation()
         locationManager.startUpdatingLocation()
+        
+        
         
     }
     
@@ -53,36 +55,72 @@ class ListNearbyPlacesTableViewController : UITableViewController{
     
     
     @IBAction func refreshButtonPressed(_ sender: Any) {
-        fetchNearbyPlaces(coordinate: (locationManager.location?.coordinate)!)
+        findPlaces(lat: locValue.latitude, lng: locValue.longitude)
     }
     
-    
-    func fetchNearbyPlaces(coordinate: CLLocationCoordinate2D) {
-        //use dataProvider to query Google for nearby places within the searchRadius filtered to the user's selected types
-        dataProvider.fetchPlacesNearCoordinate(coordinate, radius: searchRadius, types: placesToLookFor) { places in
-            //iterate through the results returned in the completion closure
-            for place in places {
-                self.name = place.name
-                self.address = place.address
-                self.image = place.photo!
+    func findPlaces(lat: Double, lng: Double) {
+        //cancel any API request previosuly made
+        yelpAPIClient.cancelAllPendingAPIRequests()
+        //query Yelp Fusion API for business result
+        yelpAPIClient.searchBusinesses(byTerm: nil, location: nil, latitude: lat, longitude: lng, radius: 10000, categories: nil, locale: nil, limit: 50, offset: 0, sortBy:.rating, priceTiers: nil, openNow: nil, openAt: nil, attributes: nil) { (response) in
+            let results = (response?.businesses)!
+            
+            for place in results {
+                self.businesses.append(place)
             }
         }
     }
+    
 
     //sets the number of cells that the user will see
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return businesses.count
     }
     
     //formats each cell
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listPlaces", for: indexPath) as! ListPlacesTableViewCell
         
-        fetchNearbyPlaces(coordinate: (locationManager.location?.coordinate)!)
+        findPlaces(lat: 37.773514, lng: -122.417807)
         
-        cell.placeName.text = name
-        cell.rating.text = address
-        cell.imageView?.image = image
+        print(businesses)
+        
+        cell.placeName.text = businesses[indexPath.row].name
+        cell.rating.text = businesses[indexPath.row].rating?.description
+        let imageUrl = URL(string: (businesses[indexPath.row].imageUrl?.absoluteString)!)
+        let session = URLSession(configuration: .default)
+        
+        //creating a dataTask
+        let getImageFromUrl = session.dataTask(with: imageUrl!) { (data, response, error) in
+            
+            //check if there is any error
+            if let e = error {
+                print("Error Occurred: \(e)")
+                
+            } else {
+                //if there is a new error, check if the response is nil or not
+                if (response as? HTTPURLResponse) != nil {
+                    
+                    //check if the response contains an image
+                    if let imageData = data {
+                        
+                        //get the image
+                        let image = UIImage(data: imageData)
+                        
+                        //display the image
+                        cell.imageView?.image = image
+                        
+                    } else {
+                        print("Image file is corrupted")
+                    }
+                } else {
+                    print("No response from server")
+                }
+            }
+        }
+        
+     //starting the download task
+        getImageFromUrl.resume()
      
         return cell
      }
@@ -92,23 +130,15 @@ class ListNearbyPlacesTableViewController : UITableViewController{
         return 120
     }
     
-}
-
-extension ListNearbyPlacesTableViewController : CLLocationManagerDelegate {
-    
     //called when the user grants or revokes location permissions
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             locationManager.requestLocation()
         }
     }
-    
     //executes when the location manager recieves new location data
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            print("location: \(location)")
-        }
-        //fetchNearbyPlaces(coordinate: locations)
+        locValue = manager.location?.coordinate
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

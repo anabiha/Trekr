@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FBB51A9700D7FC00B443B8D22C2C0713"
+               BlueprintIdentifier = "ACD28B99D9F9A0A5893B210595E26322"
                BuildableName = "Pods_Trekr.framework"
                BlueprintName = "Pods-Trekr"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FBB51A9700D7FC00B443B8D22C2C0713"
+            BlueprintIdentifier = "ACD28B99D9F9A0A5893B210595E26322"
             BuildableName = "Pods_Trekr.framework"
             BlueprintName = "Pods-Trekr"
             ReferencedContainer = "container:Pods.xcodeproj">

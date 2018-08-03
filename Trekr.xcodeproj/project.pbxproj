@@ -16,6 +16,7 @@
 		35DC45F521111F7000F98327 /* ListPlacesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DC45F421111F7000F98327 /* ListPlacesTableViewCell.swift */; };
 		35DC45FF2112318100F98327 /* PhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DC45FE2112318100F98327 /* PhotoHelper.swift */; };
 		35EA4DFB211389F200EB67FC /* CustomizedResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EA4DFA211389F200EB67FC /* CustomizedResultsViewController.swift */; };
+		35EA4DFD2114C7A200EB67FC /* CustomizedPlacesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EA4DFC2114C7A200EB67FC /* CustomizedPlacesTableViewCell.swift */; };
 		F223F4D4DBDD657EE9624667 /* Pods_Trekr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D4F1663F15F72009678EBA /* Pods_Trekr.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		35DC45F421111F7000F98327 /* ListPlacesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPlacesTableViewCell.swift; sourceTree = "<group>"; };
 		35DC45FE2112318100F98327 /* PhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHelper.swift; sourceTree = "<group>"; };
 		35EA4DFA211389F200EB67FC /* CustomizedResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedResultsViewController.swift; sourceTree = "<group>"; };
+		35EA4DFC2114C7A200EB67FC /* CustomizedPlacesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedPlacesTableViewCell.swift; sourceTree = "<group>"; };
 		72140E1752AD419177ACAD85 /* Pods-Trekr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trekr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Trekr/Pods-Trekr.release.xcconfig"; sourceTree = "<group>"; };
 		D0D4F1663F15F72009678EBA /* Pods_Trekr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trekr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F927947F8E5A23C555DF5828 /* Pods-Trekr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trekr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trekr/Pods-Trekr.debug.xcconfig"; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				35DC45F221111C2400F98327 /* ListNearbyPlacesTableViewController.swift */,
 				35DC45F421111F7000F98327 /* ListPlacesTableViewCell.swift */,
 				35EA4DFA211389F200EB67FC /* CustomizedResultsViewController.swift */,
+				35EA4DFC2114C7A200EB67FC /* CustomizedPlacesTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35EA4DFB211389F200EB67FC /* CustomizedResultsViewController.swift in Sources */,
+				35EA4DFD2114C7A200EB67FC /* CustomizedPlacesTableViewCell.swift in Sources */,
 				35DC45DF21111AD000F98327 /* ViewController.swift in Sources */,
 				35DC45F321111C2400F98327 /* ListNearbyPlacesTableViewController.swift in Sources */,
 				35DC45FF2112318100F98327 /* PhotoHelper.swift in Sources */,

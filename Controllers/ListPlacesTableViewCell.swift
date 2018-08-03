@@ -11,7 +11,6 @@ import UIKit
 //this sets up the cell in the home view
 class ListPlacesTableViewCell : UITableViewCell {
     
-    @IBOutlet weak var placeImageView : UIImageView!
     @IBOutlet weak var placeName : UILabel!
     @IBOutlet weak var rating : UILabel!
     

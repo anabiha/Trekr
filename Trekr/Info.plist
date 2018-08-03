@@ -4,8 +4,6 @@
 <dict>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Uses the photo library to allow users to upload pictures of places they have been</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Uses the camera to allow users to take pictures of places they are at</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

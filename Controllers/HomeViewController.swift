@@ -1,29 +1,39 @@
 //
-//  PhotoHelper.swift
+//  HomeViewController.swift
 //  Trekr
 //
-//  Created by Ayesha Nabiha on 8/1/18.
+//  Created by Ayesha Nabiha on 8/8/18.
 //  Copyright © 2018 Ayesha Nabiha. All rights reserved.
 //
 
 import UIKit
 import Clarifai
-import Alamofire
-import SwiftyJSON
 
-/*
- This class will present the popover to allow the user to choose between taking a new photo or selecting one from the photo library, which will either result in presenting the camera or photo library. It will also return the image that the user has taken or selected
- */
-
-class PhotoHelper: NSObject {
+class HomeViewController : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    var completionHandler: ((UIImage) -> Void)?
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var goButton: UIButton!
     
     var app = ClarifaiApp(apiKey: "b3780911900f448ab1f30a9dc4171787")
     
-    var tags : [String] = []
+    //store the tags that Clarifai generate for the image
+    var imageTags: [String] = []
     
-    var image : UIImage!
+    var image: UIImage!
+    
+    //this array holds "clean" tags that can be searchble in the google maps api
+    var cleanTags =  ["park", "beach", "restaurant", "hotel", "bar", "coffee", "food", "landmark", "museum", "garden", "vineyard", "bridge", "concert", "cathedral", "religion", "tourism", "tower", "mountain", "historic sites", "shopping", "boutique", "nature", "waterfall", "outdoors", "nature", "scenic", "river", "sunset"]
+    
+    //this stores the clean tags that go with each picture and what will be used to search Yelp's API
+    var searchableTags : [String] = []
+    
+    var finishedAnalyzing = false
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        goButton.isHidden = true
+    }
     
     //this method uses Clarifai API to return tags that describe the image
     func recognizeImage(image: UIImage) {
@@ -41,15 +51,48 @@ class PhotoHelper: NSObject {
                         return
                     }
                     if let caiOutput = caiOutputs.first {
+                        
+                        self.imageTags.removeAll()
+                        self.searchableTags.removeAll()
+                        
                         for concept in caiOutput.concepts {
                             //store the concept names in the tags array
-                            self.tags.append(concept.conceptName)
+                            self.imageTags.append(concept.conceptName)
+                        }
+                        DispatchQueue.main.async {
+                            
+                            //simplify results to what is only to be searched
+                            for tag in self.imageTags {
+                                if self.cleanTags.contains(tag) && (!self.searchableTags.contains(tag)) {
+                                    self.searchableTags.append(tag)
+                                }
+                            }
+                            
+                            self.dismiss(animated: true, completion: nil)
+                            self.userImage.image = image
+                            self.goButton.isHidden = false
+                            
+                              //if no matches found
+                            if self.searchableTags.count == 0 {
+
+                                let alert = UIAlertController(title: "Could not analyze picture", message: "Oops, seems like we couldn't figure out the image. Try another one.", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                                self.self.present(alert, animated: true, completion: nil)
+                                
+                            }
                         }
                     }
                 })
+                
             }
         }
     }
+    
+    @IBAction func uploadPhotoButtonPressed(_ sender: Any) {
+        presentActionSheet(from: self)
+    }
+    
+    
     
     func presentActionSheet(from viewController: UIViewController) {
         //initialize a new UIAlertController that be used to present different types of alerts (action sheet is a popup that will be displayed at the bottom edge of the screen
@@ -87,20 +130,28 @@ class PhotoHelper: NSObject {
         viewController.present(imagePickerController, animated: true)
     }
     
-}
-
-extension PhotoHelper: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         //image picker controller is dismissed
         picker.dismiss(animated: true)
         
         //check to see if an image was passed back in the info dictionary
-        if let selctedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            //if so, the image is passed the completionHandler property
-            completionHandler?(selctedImage)
-            //recognizeImage(image: selctedImage)
-            image = selctedImage
+        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            image = selectedImage
+            
+            recognizeImage(image: selectedImage)
+            
+            let alert = UIAlertController(title: nil, message: "Analyzing Image...", preferredStyle: .alert)
+            
+            let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+            loadingIndicator.hidesWhenStopped = true
+            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+            loadingIndicator.startAnimating();
+            
+            alert.view.addSubview(loadingIndicator)
+            self.present(alert, animated: true, completion: nil)
+            
         }
     }
     
@@ -108,9 +159,13 @@ extension PhotoHelper: UINavigationControllerDelegate, UIImagePickerControllerDe
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "letsGo" {
+            if let destination = segue.destination as?  PlacesViewController {
+                destination.chosenTags = searchableTags
+            }
+        }
+    }
+    
 }
-
-
-
-
-

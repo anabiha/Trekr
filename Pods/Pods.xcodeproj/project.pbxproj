@@ -30,7 +30,6 @@
 		1B9EDEDC964E6B08F78920B4F4B9DB84 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD1C2F0E9E1A506DD7747754A4DCE91 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		24A837D6DDE96952A51BFE33913D9EBC /* CDYelpRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4DC627F112F5A60040E3C655AA8699 /* CDYelpRegion.swift */; };
 		260112ED9612CF82C0D3B42913FE73BC /* AlamofireObjectMapper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D92062110F74E56CCDF4FB3084EA7EFC /* AlamofireObjectMapper-dummy.m */; };
-		2DD6BBAB151D3509254CAFA1B7BCC6E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8F8B5589FE399AC571F4674AF76513A /* Images.xcassets */; };
 		2EB9C67897DFC35F2F952443403798C9 /* CDYelpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AAF6CB813F1D4CEF283CD485A58529 /* CDYelpError.swift */; };
 		30D55DDD488E74CA07699C84761E3CBE /* ClarifaiConcept.h in Headers */ = {isa = PBXBuildFile; fileRef = 836D862BEEDE3569385A34FC953AF7DA /* ClarifaiConcept.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3345805C0D8E8D0726F7E5981DA61A5F /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F848075F99B9E40FD295CF6B9A2AF6 /* UIWebView+AFNetworking.m */; };
@@ -434,7 +433,6 @@
 		B5DCA9C23D1F8615DA04A067A9B10C8C /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = AFNetworking/AFURLRequestSerialization.m; sourceTree = "<group>"; };
 		B5E8C4705B4B5B2E9F08B614392D0969 /* ClarifaiSearchTerm.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ClarifaiSearchTerm.h; path = Clarifai/Classes/ClarifaiSearchTerm.h; sourceTree = "<group>"; };
 		B8CB5113DE198117B4789A30E689687C /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
-		B8F8B5589FE399AC571F4674AF76513A /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Resources/Images.xcassets; sourceTree = "<group>"; };
 		B9C02793B9473B4048FDED1E204EED26 /* Pods-Trekr-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Trekr-acknowledgements.markdown"; sourceTree = "<group>"; };
 		BA2DD033DBD308D978161C8C98B2C7D1 /* ClarifaiImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ClarifaiImage.h; path = Clarifai/Classes/ClarifaiImage.h; sourceTree = "<group>"; };
 		BC2FA272CF622E77A880B18B73194E4E /* AFAutoPurgingImageCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFAutoPurgingImageCache.m; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.m"; sourceTree = "<group>"; };
@@ -606,14 +604,6 @@
 			name = Serialization;
 			sourceTree = "<group>";
 		};
-		1BDD08220956AE79D24E639807D42851 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				B8F8B5589FE399AC571F4674AF76513A /* Images.xcassets */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		2A169C209A495D33E8717338B5C3D7B4 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -783,7 +773,6 @@
 				83AC70F7D5F8E1DE747E0E57E4209D65 /* UIColor+CDYelpFusionKit.swift */,
 				527D4DD7BF7FF9E777F1646F8D730029 /* UIImage+CDYelpFusionKit.swift */,
 				3F061585471FE1D34EB0746F5D5EEBCC /* URL+CDYelpFusionKit.swift */,
-				1BDD08220956AE79D24E639807D42851 /* Resources */,
 				553EE7BC4F3439FCE347570FF7916123 /* Support Files */,
 			);
 			path = CDYelpFusionKit;
@@ -1305,7 +1294,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DD6BBAB151D3509254CAFA1B7BCC6E5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

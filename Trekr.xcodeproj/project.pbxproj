@@ -11,7 +11,6 @@
 		35DC45E221111AD000F98327 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35DC45E021111AD000F98327 /* Main.storyboard */; };
 		35DC45E421111AD100F98327 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35DC45E321111AD100F98327 /* Assets.xcassets */; };
 		35DC45E721111AD100F98327 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35DC45E521111AD100F98327 /* LaunchScreen.storyboard */; };
-		35DC45FF2112318100F98327 /* PhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DC45FE2112318100F98327 /* PhotoHelper.swift */; };
 		35EA4E04211B689400EB67FC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EA4E03211B689400EB67FC /* HomeViewController.swift */; };
 		35EA4E06211B6C3200EB67FC /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EA4E05211B6C3200EB67FC /* PlacesViewController.swift */; };
 		35EA4E08211B890E00EB67FC /* PlaceNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EA4E07211B890E00EB67FC /* PlaceNameTableViewCell.swift */; };
@@ -25,7 +24,6 @@
 		35DC45E321111AD100F98327 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35DC45E621111AD100F98327 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35DC45E821111AD100F98327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		35DC45FE2112318100F98327 /* PhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHelper.swift; sourceTree = "<group>"; };
 		35EA4E03211B689400EB67FC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		35EA4E05211B6C3200EB67FC /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		35EA4E07211B890E00EB67FC /* PlaceNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceNameTableViewCell.swift; sourceTree = "<group>"; };
@@ -58,7 +56,6 @@
 		35DC45D021111AD000F98327 = {
 			isa = PBXGroup;
 			children = (
-				35DC45F121111AF800F98327 /* Helpers */,
 				35DC45F021111AF300F98327 /* Models */,
 				35DC45EF21111AEF00F98327 /* Views */,
 				35DC45EE21111AE300F98327 /* Controllers */,
@@ -111,14 +108,6 @@
 			children = (
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		35DC45F121111AF800F98327 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				35DC45FE2112318100F98327 /* PhotoHelper.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		3893F70A046AC37F33F02486 /* Frameworks */ = {
@@ -255,7 +244,6 @@
 			files = (
 				35EA4E08211B890E00EB67FC /* PlaceNameTableViewCell.swift in Sources */,
 				35EA4E04211B689400EB67FC /* HomeViewController.swift in Sources */,
-				35DC45FF2112318100F98327 /* PhotoHelper.swift in Sources */,
 				35DC45DD21111AD000F98327 /* AppDelegate.swift in Sources */,
 				35EA4E06211B6C3200EB67FC /* PlacesViewController.swift in Sources */,
 			);

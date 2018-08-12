@@ -8,11 +8,13 @@
 
 import UIKit
 import Clarifai
+import CoreLocation
 
-class HomeViewController : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class HomeViewController : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
     
-    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var goButton: UIButton!
+    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var location: UILabel!
     
     var app = ClarifaiApp(apiKey: "b3780911900f448ab1f30a9dc4171787")
     
@@ -29,11 +31,107 @@ class HomeViewController : UIViewController, UIImagePickerControllerDelegate, UI
     
     var finishedAnalyzing = false
     
+    var locationManager : CLLocationManager!
+    
+    lazy var geocoder = CLGeocoder()
+    
+    var lat: Double!
+    var long: Double!
+    
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        determineMyCurrentLocation()
+//    }
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
+    //    location.text = 
+        
+        cameraButton.layer.cornerRadius = 15
+        cameraButton.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha: 0.25).cgColor
+        cameraButton.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
+        cameraButton.layer.shadowOpacity = 1.0
+        cameraButton.layer.shadowRadius = 0.0
+        cameraButton.layer.masksToBounds = false
+        
+
+//
+//
+//        let location = CLLocation(latitude: lat, longitude: long)
+//        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+//            self.processResponse(withPlacemarks: placemarks, error: error)
+//        }
+        
         goButton.isHidden = true
+        
     }
+    
+//    func determineMyCurrentLocation() {
+//        locationManager = CLLocationManager()
+//        
+//        
+//            locationManager.delegate = self
+//            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+//            locationManager.requestAlwaysAuthorization()
+//        
+//        if CLLocationManager.locationServicesEnabled() {
+//            locationManager.startUpdatingLocation()
+//        }
+//        
+//        
+//    }
+//
+//    // If we have been deined access give the user the option to change it
+//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+//        if(status == CLAuthorizationStatus.denied) {
+//            showLocationDisabledPopUp()
+//        }
+//    }
+//
+//    // Show the popup to the user if we have been deined access
+//    func showLocationDisabledPopUp() {
+//        let alertController = UIAlertController(title: "Background Location Access Disabled",
+//                                                message: "Location is needed to determine places around you",
+//                                                preferredStyle: .alert)
+//
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//        alertController.addAction(cancelAction)
+//
+//        let openAction = UIAlertAction(title: "Open Settings", style: .default) { (action) in
+//            if let url = URL(string: UIApplicationOpenSettingsURLString) {
+//                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//            }
+//        }
+//        alertController.addAction(openAction)
+//
+//        self.present(alertController, animated: true, completion: nil)
+//    }
+//
+//
+//    private func processResponse(withPlacemarks placemarks: [CLPlacemark]?, error: Error?) {
+//        if let error = error {
+//            print("Unable to geocode location")
+//        } else {
+//            if let placemarks = placemarks, let placemark = placemarks.first {
+//                location.text = placemark.locality
+//            } else {
+//                location.text = "Unable to find location"
+//            }
+//        }
+//    }
+//
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//
+//        let userLocation: CLLocation = locations[0] as CLLocation
+//        lat = userLocation.coordinate.latitude
+//        long = userLocation.coordinate.longitude
+//    }
+    
+    
     
     //this method uses Clarifai API to return tags that describe the image
     func recognizeImage(image: UIImage) {
@@ -69,7 +167,13 @@ class HomeViewController : UIViewController, UIImagePickerControllerDelegate, UI
                             }
                             
                             self.dismiss(animated: true, completion: nil)
-                            self.userImage.image = image
+                            
+                            self.goButton.layer.cornerRadius = 15
+                            self.goButton.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha: 0.25).cgColor
+                            self.goButton.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
+                            self.goButton.layer.shadowOpacity = 1.0
+                            self.goButton.layer.shadowRadius = 0.0
+                            self.goButton.layer.masksToBounds = false
                             self.goButton.isHidden = false
                             
                               //if no matches found
